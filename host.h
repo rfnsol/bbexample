@@ -5,7 +5,7 @@
 /*
  * Example function
  */
-extern void host_send(void)
+extern void host_send(void);
 
 
 #endif /* BB_EXAMPLE_H */
