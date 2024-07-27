@@ -79,7 +79,7 @@ void *socket_thread(void *arg) {
 
 int main(void)
 {
-	printf("RFNSOL Fixed Reader RNS.MX\n");
+	printf("RFNSOL Fixed Reader RNS.MX V01\n");
 
 	pthread_t server_thread;
 
