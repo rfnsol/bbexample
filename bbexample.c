@@ -9,6 +9,7 @@
 #include <pthread.h>
 
 #include "bbexample.h"
+#include "host.h"
 
 #define PORT 8080
 #define BUFFER_SIZE 1024
@@ -55,20 +56,22 @@ void *socket_thread(void *arg) {
 
     printf("Server listening on port %d\n", PORT);
 
-    while ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen))) {
-        printf("Connection accepted\n");
+	while ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen))) 
+	{
+		printf("Connection accepted\n");
 
-        // 클라이언트로부터 메시지 읽기
-        read(new_socket, buffer, BUFFER_SIZE);
-        printf("Message from client: %s\n", buffer);
+		// 클라이언트로부터 메시지 읽기
+		read(new_socket, buffer, BUFFER_SIZE);
+		printf("Message from client: %s\n", buffer);
 
-        // 클라이언트에 응답 보내기
-        send(new_socket, hello, strlen(hello), 0);
-        printf("Hello message sent\n");
+		// 클라이언트에 응답 보내기
+		send(new_socket, hello, strlen(hello), 0);		
+		printf("Hello message sent\n");
+		host_send(new_socket);		
 
-        // 소켓 닫기
-        close(new_socket);
-    }
+		// 소켓 닫기
+		close(new_socket);
+	}
 
     close(server_fd);
     pthread_exit(NULL);
