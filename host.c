@@ -1,12 +1,10 @@
 #include <stdio.h>
-
-
 #include "host.h"
 
 
-void host_send(int sock)
+void host_send(void)
 {
-    const char *buf = "host send : rfnsol ";
+ //   const char *buf = "host send : rfnsol ";
 	printf("host_send~\n");
 	
 	//send(sock, buf, strlen(buf), 0);		
@@ -14,9 +12,7 @@ void host_send(int sock)
 
 	printf("~host_send\n");
 
-	while(1)
-		{
-		}
+
 }
 
 
